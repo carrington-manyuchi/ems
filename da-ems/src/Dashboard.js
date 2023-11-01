@@ -1,4 +1,6 @@
 import React from "react";
+import Home from "./Home";
+
 
 const Dashboard = () => {
   return (
@@ -449,7 +451,19 @@ const Dashboard = () => {
         </header>
         {/** <!-- HEADER DESKTOP--> */}
 
-       
+        {/** <!-- MAIN CONTENT--> */}
+      <div class="main-content">
+        <div class="section__content section__content--p30">
+          <div class="container-fluid">
+            <div class="row">
+                {/** Pages will get in here */}
+                <Home/>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/** <!-- END MAIN CONTENT--> */}
+
         {/** <!-- END PAGE CONTAINER--> */}
       </div>
     </div>
