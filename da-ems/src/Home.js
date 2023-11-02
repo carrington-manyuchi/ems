@@ -3,7 +3,7 @@ import React from "react";
 const Home = () => {
   return (
     <>
-      <div className="col-md-12">
+      <div className="col-md-12 m-t-30">
         <div className="overview-wrap">
           <h2 className="title-1">Digital Academy Employees Overview</h2>
           <button className="au-btn au-btn-icon au-btn--blue">
@@ -13,7 +13,7 @@ const Home = () => {
       </div>
       {/** Overview */}
       <div className="row m-t-25">
-        <div className="col-sm-6 col-lg-3">
+        <div className="col-sm-6 col-lg-3 ">
           <div className="overview-item overview-item--c1">
             <div className="overview__inner">
               <div className="overview-box clearfix">
@@ -22,7 +22,7 @@ const Home = () => {
                 </div>
                 <div className="text">
                   <h2>6</h2>
-                  <span>employees onleave</span>
+                  <span>Employees on leave</span>
                 </div>
               </div>
               <div className="overview-chart">
@@ -36,11 +36,11 @@ const Home = () => {
             <div className="overview__inner">
               <div className="overview-box clearfix">
                 <div className="icon">
-                  <i className="zmdi zmdi-shopping-cart"></i>
+                  <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
                 </div>
                 <div className="text">
                   <h2>28</h2>
-                  <span>employees online</span>
+                  <span>Employees online</span>
                 </div>
               </div>
               <div className="overview-chart">
@@ -54,7 +54,7 @@ const Home = () => {
             <div className="overview__inner">
               <div className="overview-box clearfix">
                 <div className="icon">
-                  <i className="zmdi zmdi-calendar-note"></i>
+                  <i class="zmdi zmdi-alert-polygon"></i>
                 </div>
                 <div className="text">
                   <h2>1</h2>
@@ -72,7 +72,7 @@ const Home = () => {
             <div className="overview__inner">
               <div className="overview-box clearfix">
                 <div className="icon">
-                  <i className="zmdi zmdi-money"></i>
+                  <i class="zmdi zmdi-developer-board"></i>
                 </div>
                 <div className="text">
                   <h2>96%</h2>
@@ -95,6 +95,12 @@ const Home = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col">
+                <div className="overview-wrap mb-5 ">
+                  <h2 className="title-1"></h2>
+                  <button className="au-btn au-btn-icon au-btn--blue">
+                    <i className="zmdi zmdi-plus"></i> Add Staff Appointments
+                  </button>
+                </div>
                 <div className="au-card">
                   <div id="calendar"></div>
                 </div>

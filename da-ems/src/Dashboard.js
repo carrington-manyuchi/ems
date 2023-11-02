@@ -1,6 +1,8 @@
 import React from "react";
 import Home from "./Home";
-
+import Employees from "./Employees";
+import Login from "./Login";
+import Register from "./Register";
 
 const Dashboard = () => {
   return (
@@ -134,7 +136,7 @@ const Dashboard = () => {
       <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
           <a href="#">
-            <img src="images/icon/logo.png" alt="Cool Admin" />
+            <img src="images/icon/logo-s.png" alt="Cool Admin" />
           </a>
         </div>
         <div class="menu-sidebar__content js-scrollbar1">
@@ -395,11 +397,14 @@ const Dashboard = () => {
                   <div class="account-wrap">
                     <div class="account-item clearfix js-item-menu">
                       <div class="image">
-                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                        <img
+                          src="/images/icon/carrington2.jpeg"
+                          alt="Carrington Manyuchi"
+                        />
                       </div>
                       <div class="content">
                         <a class="js-acc-btn" href="#">
-                          john doe
+                          Carrington Manyuchi
                         </a>
                       </div>
                       <div class="account-dropdown js-dropdown">
@@ -452,17 +457,17 @@ const Dashboard = () => {
         {/** <!-- HEADER DESKTOP--> */}
 
         {/** <!-- MAIN CONTENT--> */}
-      <div class="main-content">
-        <div class="section__content section__content--p30">
-          <div class="container-fluid">
-            <div class="row">
+        <div class="main-content">
+          <div class="section__content section__content--p30">
+            <div class="container-fluid">
+              <div class="row">
                 {/** Pages will get in here */}
-                <Home/>
+                <Register />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {/** <!-- END MAIN CONTENT--> */}
+        {/** <!-- END MAIN CONTENT--> */}
 
         {/** <!-- END PAGE CONTAINER--> */}
       </div>
