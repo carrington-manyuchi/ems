@@ -1,4 +1,6 @@
 import React from "react";
+import Login from "./Login";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -57,7 +59,9 @@ const Register = () => {
                 <div class="register-link">
                   <p>
                     Already have account?
-                    <a href="#">Sign In</a>
+                    <Link to="/" element={<Login />}>
+                      <a>Sign In</a>
+                    </Link>
                   </p>
                 </div>
               </div>

@@ -6,9 +6,6 @@ const Home = () => {
       <div className="col-md-12 m-t-30">
         <div className="overview-wrap">
           <h2 className="title-1">Digital Academy Employees Overview</h2>
-          <button className="au-btn au-btn-icon au-btn--blue">
-            <i className="zmdi zmdi-plus"></i>add item
-          </button>
         </div>
       </div>
       {/** Overview */}
@@ -57,8 +54,8 @@ const Home = () => {
                   <i class="zmdi zmdi-alert-polygon"></i>
                 </div>
                 <div className="text">
-                  <h2>1</h2>
-                  <span>Didn't report on time</span>
+                  <h2> 1 </h2>
+                  <span>Didn't report</span>
                 </div>
               </div>
               <div className="overview-chart">
@@ -76,7 +73,7 @@ const Home = () => {
                 </div>
                 <div className="text">
                   <h2>96%</h2>
-                  <span>Attendance last week</span>
+                  <span>Attendance </span>
                 </div>
               </div>
               <div className="overview-chart">

@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Register from "./Register";
 
 const Login = () => {
   return (
     <div class="page-wrapper">
-      <div class="page-content--bge5">
+      <div class="page-content--bge5 mt-2">
         <div class="container">
           <div class="login-wrap">
             <div class="login-content">
@@ -51,7 +53,9 @@ const Login = () => {
                 <div class="register-link">
                   <p>
                     Don't you have account?
-                    <a href="#">Sign Up Here</a>
+                    <Link to="/register" element={<Register />}>
+                      <a>Sign Up Here</a>
+                    </Link>
                   </p>
                 </div>
               </div>

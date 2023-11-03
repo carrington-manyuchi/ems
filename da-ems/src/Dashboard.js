@@ -1,8 +1,5 @@
 import React from "react";
-import Home from "./Home";
-import Employees from "./Employees";
-import Login from "./Login";
-import Register from "./Register";
+import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -27,24 +24,32 @@ const Dashboard = () => {
           <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
               <li class="has-sub">
-                <a class="js-arrow" href="#">
-                  <i class="fas fa-tachometer-alt"></i>Dashboard
-                </a>
+                <Link to="/dashboard">
+                  <a class="js-arrow" href="#">
+                    <i class="fas fa-tachometer-alt"></i>Dashboard
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href="chart.html">
-                  <i class="fas fa-chart-bar"></i>All Employees
-                </a>
+                <Link to="/dashboard/employees">
+                  <a>
+                    <i class="fas fa-chart-bar"></i>All Employees
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href="table.html">
-                  <i class="fas fa-table"></i>Add Employee
-                </a>
+                <Link to="/dashboard/addEmployee">
+                  <a href="table.html">
+                    <i class="fas fa-table"></i>Add Employee
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href="form.html">
-                  <i class="far fa-check-square"></i>All Departments
-                </a>
+                <Link to="/dashboard/departments">
+                  <a href="form.html">
+                    <i class="far fa-check-square"></i>All Departments
+                  </a>
+                </Link>
               </li>
               <li>
                 <a href="calendar.html">
@@ -73,22 +78,26 @@ const Dashboard = () => {
           <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
               <li class="active has-sub">
-                <a class="js-arrow" href="#">
-                  <i class="fas fa-tachometer-alt"></i>Dashboard
-                </a>
+                <Link to="/dashboard">
+                  <a class="js-arrow">
+                    <i class="fas fa-tachometer-alt"></i>Dashboard
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href="chart.html">
-                  <i class="fas fa-chart-bar"></i>All Employees
-                </a>
+                <Link to="/dashboard/employees">
+                  <a>
+                    <i class="fas fa-chart-bar"></i>All Employees
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href="table.html">
+                <a>
                   <i class="fas fa-table"></i>Add Employee
                 </a>
               </li>
               <li>
-                <a href="form.html">
+                <a>
                   <i class="far fa-check-square"></i>All Departments
                 </a>
               </li>
@@ -98,8 +107,11 @@ const Dashboard = () => {
                 </a>
               </li>
               <li class="has-sub">
-                <a class="js-arrow" href="#">
-                  <i class="fas fa-copy"></i>Logout
+                <a class="js-arrow">
+                  <Link to="/">
+                    <i class="fas fa-copy"></i>
+                    Logout
+                  </Link>
                 </a>
               </li>
             </ul>
@@ -196,7 +208,7 @@ const Dashboard = () => {
             <div class="container-fluid">
               <div class="row">
                 {/** Pages will get in here */}
-                <Register />
+                <Outlet />
               </div>
             </div>
           </div>
