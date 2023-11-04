@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const Employees = () => {
   const [employees, setEmployees] = useState([
@@ -74,8 +75,13 @@ const Employees = () => {
                 </div>
                 <div className="table-data__tool-right">
                   <button className="au-btn au-btn-icon au-btn--green au-btn--small">
-                    <i className="zmdi zmdi-plus"></i>add employee
+                    <Link to="/dashboard/addEmployee">
+                      <a>
+                        <i className="zmdi zmdi-plus"></i>add employee
+                      </a>
+                    </Link>
                   </button>
+
                   <div className="rs-select2--dark rs-select2--sm rs-select2--dark2">
                     <select className="js-select2" name="type">
                       <option selected="selected">Export</option>
@@ -128,7 +134,11 @@ const Employees = () => {
                               data-placement="top"
                               title="Edit"
                             >
-                              <i className="zmdi zmdi-edit"></i>
+                              <Link to="/dashboard/updateEmployee">
+                                <a>
+                                  <i className="zmdi zmdi-edit"></i>
+                                </a>
+                              </Link>
                             </button>
                             <button
                               className="item"

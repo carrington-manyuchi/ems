@@ -71,7 +71,7 @@ const Dashboard = () => {
       <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
           <a href="#">
-            <img src="images/icon/logo-s.png" alt="Cool Admin" />
+            <img src="../images/icon/logo-s.png" alt="Cool Admin" />
           </a>
         </div>
         <div class="menu-sidebar__content js-scrollbar1">
@@ -91,9 +91,7 @@ const Dashboard = () => {
                   </a>
                 </Link>
               </li>
-              <li>
-                
-              </li>
+              <li></li>
               <li>
                 <Link to="/dashboard/departments">
                   <a>

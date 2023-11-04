@@ -9,11 +9,9 @@ import Register from "./Register";
 import Departments from "./Departments";
 import Department from "./Department";
 import AddEmployee from "./AddEmployee";
-
+import UpdateEmployee from "./UpdateEmployee";
 
 function App() {
-
-
   return (
     <BrowserRouter>
       <Routes>
@@ -30,6 +28,10 @@ function App() {
           <Route
             path="/dashboard/addEmployee"
             element={<AddEmployee />}
+          ></Route>
+          <Route
+            path="/dashboard/updateEmployee"
+            element={<UpdateEmployee />}
           ></Route>
         </Route>
       </Routes>
