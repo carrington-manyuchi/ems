@@ -92,19 +92,21 @@ const Dashboard = () => {
                 </Link>
               </li>
               <li>
-                <a>
-                  <i class="fas fa-table"></i>Add Employee
-                </a>
+                
               </li>
               <li>
-                <a>
-                  <i class="far fa-check-square"></i>All Departments
-                </a>
+                <Link to="/dashboard/departments">
+                  <a>
+                    <i class="far fa-check-square"></i>All Departments
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href="calendar.html">
-                  <i class="fas fa-calendar-alt"></i>Add Department
-                </a>
+                <Link to="/dashboard/department">
+                  <a>
+                    <i class="fas fa-calendar-alt"></i>Add Department
+                  </a>
+                </Link>
               </li>
               <li class="has-sub">
                 <a class="js-arrow">
