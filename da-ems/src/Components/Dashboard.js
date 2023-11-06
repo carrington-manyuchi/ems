@@ -132,7 +132,7 @@ const Dashboard = () => {
                     class="au-input au-input--xl"
                     type="text"
                     name="search"
-                    placeholder="Search for employees &amp; departments..."
+                    placeholder="Search for employee &amp; departments..."
                   />
                   <button class="au-btn--submit" type="submit">
                     <i class="zmdi zmdi-search"></i>

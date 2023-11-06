@@ -1,54 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Employees = () => {
-  const [employees, setEmployees] = useState([
-    {
-      firstName: "Carrington",
-      lastName: "Manyuchi",
-      email: "carrington@gmail.com",
-      department: "Everyday Banking",
-      status: "Active",
-    },
-    {
-      firstName: "Carrington",
-      lastName: "Manyuchi",
-      email: "carrington@gmail.com",
-      department: "Everyday Banking",
-      status: "Active",
-    },
-    {
-      firstName: "Carrington",
-      lastName: "Manyuchi",
-      email: "carrington@gmail.com",
-      department: "Everyday Banking",
-      status: "Active",
-    },
-    {
-      firstName: "Carrington",
-      lastName: "Manyuchi",
-      email: "carrington@gmail.com",
-      department: "Everyday Banking",
-      status: "Active",
-    },
-    {
-      firstName: "Carrington",
-      lastName: "Manyuchi",
-      email: "carrington@gmail.com",
-      department: "Everyday Banking",
-      status: "Active",
-    },
-  ]);
-  /**
+  const [worker, setWorker] = useState([]);
+
   useEffect(() => {
     axios
-      .get("/http:localhost:3001")
-      .then((result) => setUsers(result.data))
-      .ctach((err) => crossOriginIsolated.log(err));
+      .get("http://localhost:5173/auth/employees")
+      .then((result) => {
+        if (result.data.Status) {
+          setWorker(result.data.Result);
+        } else {
+          alert(result.data.error);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-  })
- */
   return (
     <div className="main-content">
       <div className="section__content section__content--p30">
@@ -113,18 +82,18 @@ const Employees = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {employees.map((employee) => (
+                    {worker.map((emp) => (
                       <tr className="tr-shadow text-center">
-                        <td className=""> {employee.firstName} </td>
+                        <td className=""> {emp.firstName} </td>
 
-                        <td className="">{employee.lastName}</td>
+                        <td className="">{emp.lastName}</td>
                         <td>
-                          <span className="block-email">{employee.email}</span>
+                          <span className="block-email">{emp.email}</span>
                         </td>
-                        <td> {employee.status} </td>
+                        <td> {emp.status} </td>
                         <td>
                           <span className="status--process">
-                            {employee.department}
+                            {emp.department}
                           </span>
                         </td>
                         <td>

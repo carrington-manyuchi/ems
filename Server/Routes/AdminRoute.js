@@ -2,6 +2,8 @@ import express from "express";
 import con from "../utils/db.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import multer from "multer";
+import path from "path";
 
 const router = express.Router();
 
@@ -42,7 +44,26 @@ router.post("/department", (req, res) => {
   });
 });
 
-router.post("/addEmployee", (req, res) => {
+//image upload
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "Public/images");
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "_" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({
+  storage: storage,
+});
+
+// Creating an employee & sends to the db.
+router.post("/addEmployee", upload.single("image"), (req, res) => {
   const sql = `INSERT INTO  employee  (firstName, lastName, email, department_id, status, image, password)  VALUES (?) `;
   bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (err) return res.json({ Status: false, Error: "Query Error" });
@@ -53,13 +74,21 @@ router.post("/addEmployee", (req, res) => {
 
       req.body.department_id,
       req.body.status,
-      req.body.image,
+      req.file.filename,
       hash,
     ];
     con.query(sql, [values], (err, result) => {
       if (err) return res.json({ Status: false, Error: err });
       return res.json({ Status: true });
     });
+  });
+});
+
+router.get("/employees", (req, res) => {
+  const sql = "SELECT * FROM employee";
+  con.query(sql, (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" });
+    return res.json({ Status: true, Result: result });
   });
 });
 
