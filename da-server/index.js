@@ -10,7 +10,7 @@ app.use(express.json());
 
 mongoose.connect("mongodb://127.0.0.1:27017/da_employees");
 
-app.post("/createEmployee", (req, res) => {
+app.post("/dashboard/addEmployee", (req, res) => {
   EmployeeModel.create(req.body).then((employees) =>
     res.json(employees).catch((err) => res.json(err))
   );
@@ -19,3 +19,4 @@ app.post("/createEmployee", (req, res) => {
 app.listen(3001, () => {
   console.log("Server is Running");
 });
+s;

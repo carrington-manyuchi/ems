@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Register from "./Register";
 
 const Login = () => {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div class="page-wrapper">
       <div class="page-content--bge5 mt-2">
@@ -15,7 +24,7 @@ const Login = () => {
                 </a>
               </div>
               <div class="login-form">
-                <form action="" method="post">
+                <form onSubmit={handleSubmit}>
                   <div class="form-group">
                     <label>Email Address</label>
                     <input
@@ -23,6 +32,9 @@ const Login = () => {
                       type="email"
                       name="email"
                       placeholder="Email"
+                      onChange={(e) =>
+                        setValues({ ...values, email: e.target.value })
+                      }
                     />
                   </div>
                   <div class="form-group">
@@ -32,6 +44,10 @@ const Login = () => {
                       type="password"
                       name="password"
                       placeholder="Password"
+                      onChange={(e) => ({
+                        ...values,
+                        password: e.target.value,
+                      })}
                     />
                   </div>
                   <div class="login-checkbox">

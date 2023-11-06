@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import axios from "axios";
 
 const Employees = () => {
   const [employees, setEmployees] = useState([
@@ -39,7 +40,15 @@ const Employees = () => {
       status: "Active",
     },
   ]);
+  /**
+  useEffect(() => {
+    axios
+      .get("/http:localhost:3001")
+      .then((result) => setUsers(result.data))
+      .ctach((err) => crossOriginIsolated.log(err));
 
+  })
+ */
   return (
     <div className="main-content">
       <div className="section__content section__content--p30">

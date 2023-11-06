@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddEmployee = () => {
   const [firstName, setFirstName] = useState();
@@ -6,18 +8,23 @@ const AddEmployee = () => {
   const [email, setEmail] = useState();
   const [department, setDepartment] = useState();
   const [status, setStatus] = useState();
+  const navigate = useNavigate();
 
   const Submit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/dashboard/addEmployee", {
+      .post("http://localhost:3000/dashboard/addEmployee", {
         firstName,
         lastName,
-        status,
-        department,
         email,
+        department,
+        status,
       })
-      .then((result) => console.log(result))
+      .then((result) => {
+        console.log(result);
+        navigate("/");
+      })
+
       .catch((err) => console.log(err));
   };
 
