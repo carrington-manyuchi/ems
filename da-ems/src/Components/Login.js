@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Register from "./Register";
+import axios from "axios";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -8,8 +9,24 @@ const Login = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+
+  // for storing cookies
+  axios.defaults.withCredentials = true;
+  const [error, setError] = useState(null);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    axios
+      .post("http://localhost:5173/auth/adminlogin", values)
+      .then((result) => {
+        if (result.data.loginStatus) {
+          navigate("/dashboard");
+        } else {
+          setError(result.data.Error);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -23,6 +40,7 @@ const Login = () => {
                   <img src="/images/icon/logo-s.png" alt="CoolAdmin" />
                 </a>
               </div>
+              <div className="text-danger">{error && error}</div>
               <div class="login-form">
                 <form onSubmit={handleSubmit}>
                   <div class="form-group">
@@ -44,10 +62,12 @@ const Login = () => {
                       type="password"
                       name="password"
                       placeholder="Password"
-                      onChange={(e) => ({
-                        ...values,
-                        password: e.target.value,
-                      })}
+                      onChange={(e) =>
+                        setValues({
+                          ...values,
+                          password: e.target.value,
+                        })
+                      }
                     />
                   </div>
                   <div class="login-checkbox">

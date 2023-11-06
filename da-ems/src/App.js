@@ -1,15 +1,15 @@
 import "./App.css";
-import Dashboard from "./Dashboard";
-import Employees from "./Employees";
+import Dashboard from "./Components/Dashboard";
+import Employees from "./Components/Employees";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import Login from "./Login";
-import Register from "./Register";
-import Departments from "./Departments";
-import Department from "./Department";
-import AddEmployee from "./AddEmployee";
-import UpdateEmployee from "./UpdateEmployee";
+import Home from "./Components/Home";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
+import Departments from "./Components/Departments";
+import Department from "./Components/Department";
+import AddEmployee from "./Components/AddEmployee";
+import UpdateEmployee from "./Components/UpdateEmployee";
 
 function App() {
   return (
