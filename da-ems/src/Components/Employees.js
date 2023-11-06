@@ -85,7 +85,7 @@ const Employees = () => {
                 <div className="table-data__tool-right">
                   <button className="au-btn au-btn-icon au-btn--green au-btn--small">
                     <Link to="/dashboard/addEmployee">
-                      <a>
+                      <a className="text-white">
                         <i className="zmdi zmdi-plus"></i>add employee
                       </a>
                     </Link>

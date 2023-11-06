@@ -1,30 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const AddEmployee = () => {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [email, setEmail] = useState();
-  const [department, setDepartment] = useState();
-  const [status, setStatus] = useState();
-  const navigate = useNavigate();
+  const [employee, setEmployee] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    department_id: "",
+    status: "",
+    image: "",
+    password: "",
+  });
 
-  const Submit = (e) => {
+  const [departments, setDepartments] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5173/auth/departments")
+      .then((result) => {
+        if (result.data.Status) {
+          setDepartments(result.data.Result);
+        } else {
+          alert(result.data.error);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/dashboard/addEmployee", {
-        firstName,
-        lastName,
-        email,
-        department,
-        status,
-      })
-      .then((result) => {
-        console.log(result);
-        navigate("/");
-      })
-
+      .post("http://localhost:5173/auth/addEmployee", employee)
+      .then((result) => console.log(result.data))
       .catch((err) => console.log(err));
   };
 
@@ -34,55 +41,69 @@ const AddEmployee = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <h3 className="title-5 m-b-35">Create A New Employees </h3>
-              <form onSubmit={Submit}>
+              <h3 className="title-5 m-b-35">Create A New Employee </h3>
+              <form onSubmit={handleSubmit}>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="inputEmail4">First Name</label>
+                    <label for="firstName"> Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="inputEmail4"
+                      id="firstName"
                       placeholder="First Name"
-                      onChange={(e) => setFirstName(e.target.value)}
+                      name="firstName"
+                      onChange={(e) => {
+                        setEmployee({
+                          ...employee,
+                          firstName: e.target.value,
+                        });
+                      }}
                     />
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="inputEmail4">Last Name</label>
+                    <label for="lastName">Surname</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="inputEmail4"
+                      id="lastName"
+                      name="lastName"
                       placeholder="Last Name"
-                      onChange={(e) => setLastName(e.target.value)}
+                      onChange={(e) => {
+                        setEmployee({ ...employee, lastName: e.target.value });
+                      }}
                     />
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
+                    <label for="email">Email</label>
                     <input
                       type="email"
                       class="form-control"
-                      id="inputEmail4"
+                      id="email"
+                      name="email"
                       placeholder="Email"
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => {
+                        setEmployee({ ...employee, email: e.target.value });
+                      }}
                     />
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="inputState">Department</label>
+                    <label for="department">Department</label>
                     <select
-                      id="inputState"
+                      id="department"
+                      name="department"
                       class="form-control"
-                      onChange={(e) => setDepartment(e.target.value)}
+                      onChange={(e) => {
+                        setEmployee({
+                          ...employee,
+                          department_id: e.target.value,
+                        });
+                      }}
                     >
-                      <option selected>Select Department</option>
-                      <option>Ayoba</option>
-                      <option>Data Science</option>
-                      <option>Everyday Banking</option>
-                      <option>Fullstack</option>
-                      <option>PWD</option>
-                      <option>Sales Force</option>
+                      {departments.map((dpt) => (
+                        <option value={dpt.id}>{dpt.name}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -99,9 +120,13 @@ const AddEmployee = () => {
                             type="radio"
                             name="gridRadios"
                             id="gridRadios1"
-                            value="option1"
-                            onChange={(e) => setStatus(e.target.value)}
-                            checked
+                            value="active"
+                            onChange={(e) => {
+                              setEmployee({
+                                ...employee,
+                                status: e.target.value,
+                              });
+                            }}
                           />
                           <label class="form-check-label" for="gridRadios1">
                             Active
@@ -113,8 +138,13 @@ const AddEmployee = () => {
                             type="radio"
                             name="gridRadios"
                             id="gridRadios2"
-                            value="option2"
-                            onChange={(e) => setStatus(e.target.value)}
+                            value="inactive"
+                            onChange={(e) => {
+                              setEmployee({
+                                ...employee,
+                                status: e.target.value,
+                              });
+                            }}
                           />
                           <label class="form-check-label" for="gridRadios2">
                             Inactive / Resigned
@@ -123,6 +153,34 @@ const AddEmployee = () => {
                       </div>
                     </div>
                   </fieldset>
+                </div>
+                <div class="form-group">
+                  <label for="image">Select Image</label>
+                  <input
+                    type="file"
+                    class="form-control-file"
+                    id="image"
+                    name="image"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, image: e.target.files[0] });
+                    }}
+                  />
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="password"
+                      name="password"
+                      placeholder="First Name"
+                      onChange={(e) => {
+                        setEmployee({ ...employee, password: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div class="form-group col-md-6"></div>
                 </div>
                 <button type="submit" class="btn btn-primary">
                   Sign in
