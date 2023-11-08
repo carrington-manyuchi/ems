@@ -102,4 +102,31 @@ router.get("/employee/:id", (req, res) => {
   });
 });
 
+router.put("/edit_employee/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = `UPDATE employee 
+      set firstName = ?, lastName = ?, email = ?,  department_id = ? , status = ?
+      Where id = ?`;
+  const values = [
+    req.body.firstName,
+    req.body.lastName,
+    req.body.email,
+    req.body.department_id,
+    req.body.status,
+  ];
+  con.query(sql, [...values, id], (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
+router.get("/delete_employee/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "delete  FROM employee WHERE id = ?";
+  con.query(sql, [id], (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
 export { router as adminRouter };

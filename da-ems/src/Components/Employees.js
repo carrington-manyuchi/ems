@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Employees = () => {
   const [worker, setWorker] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -17,6 +18,18 @@ const Employees = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const handleDelete = (id) => {
+    axios
+      .delete("http://localhost:5173/auth/delete_employee/" + id)
+      .then((result) => {
+        if (result.data.Status) {
+          navigate("/dashboard/employees");
+        } else {
+          alert(result.data.Error);
+        }
+      });
+  };
 
   return (
     <div className="main-content">
@@ -123,6 +136,7 @@ const Employees = () => {
                               data-toggle="tooltip"
                               data-placement="top"
                               title="Delete"
+                              onClick={() => handleDelete(emp.id)}
                             >
                               <i className="zmdi zmdi-delete"></i>
                             </button>
