@@ -1,4 +1,6 @@
 # DA EMS using React Node & MySQL
+
+<img width="1398" alt="Screenshot 2023-11-08 at 20 52 40" src="https://github.com/carrington-manyuchi/ems/assets/60835640/b5da1f62-fc54-4a6e-a1f4-9b365272cae6">
  
 # Packages Installed in the server side
 
