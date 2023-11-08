@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const EditEmployee = () => {
@@ -11,11 +11,10 @@ const EditEmployee = () => {
     email: "",
     department_id: "",
     status: "",
-    image: "",
-    password: "",
   });
   const [departments, setDepartments] = useState([]);
   const [worker, setWorker] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get("http://localhost:5173/auth/departments")
@@ -37,10 +36,25 @@ const EditEmployee = () => {
           lastName: result.data.Result[0].lastName,
           email: result.data.Result[0].email,
           status: result.data.Result[0].status,
+          department_id: result.data.Result[0].department_id,
         });
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .put("http://localhost:3000/auth/edit_employee/" + id, employee)
+      .then((result) => {
+        if (result.data.Status) {
+          navigate("/dashboard/employees");
+        } else {
+          alert(result.data.Error);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="main-content">
