@@ -1,4 +1,4 @@
-# DA Employee Management System using React Node & MySQL
+# DA EMS using React Node & MySQL
  
 # Packages Installed in the server side
 
