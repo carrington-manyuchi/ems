@@ -21,3 +21,9 @@
 - npm install bootstrap -> CSS frontend framework
 - npm i react-router-dom -> for routing (navigating from one component to another components)
 - npm i bootstrap-icons -> to use bootstrap icons
+
+
+# How to run the app.
+- Clone the repo and install all dependencies
+-  Front end will run on http://localhost:3000/
+-  Back end will run on http://localhost:5173/
