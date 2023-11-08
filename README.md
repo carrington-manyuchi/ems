@@ -24,6 +24,12 @@
 - npm i react-router-dom -> for routing (navigating from one component to another components)
 - npm i bootstrap-icons -> to use bootstrap icons
 
+# Accomplishments
+
+- Login & Registration form
+- Perform all CRUD functionalities
+- Can add a department   
+
 <img width="1415" alt="Screenshot 2023-11-08 at 21 15 00" src="https://github.com/carrington-manyuchi/ems/assets/60835640/19eb6215-78b8-415f-a15f-5e40c6a7df00">
 
 
