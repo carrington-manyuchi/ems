@@ -1,5 +1,5 @@
-# Digital Academy_Employee_Management_System
-
+# DA Employee Management System using React Node & MySQL
+ 
 # Packages Installed in the server side
 
 - Express -> json framework
