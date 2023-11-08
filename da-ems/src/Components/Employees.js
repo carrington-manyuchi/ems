@@ -91,11 +91,7 @@ const Employees = () => {
                           <span className="block-email">{emp.email}</span>
                         </td>
                         <td> {emp.status} </td>
-                        <td>
-                          <span className="status--process">
-                            {emp.department}
-                          </span>
-                        </td>
+                        <td>{emp.department}</td>
                         <td>
                           <div className="table-data-feature">
                             <button
@@ -104,7 +100,11 @@ const Employees = () => {
                               data-placement="top"
                               title="View"
                             >
-                              <i className="zmdi zmdi-mail-send"></i>
+                              <Link>
+                                <a href="">
+                                  <i className="zmdi zmdi-mail-send"></i>
+                                </a>
+                              </Link>
                             </button>
                             <button
                               className="item"
@@ -112,7 +112,7 @@ const Employees = () => {
                               data-placement="top"
                               title="Edit"
                             >
-                              <Link to="/dashboard/updateEmployee">
+                              <Link to={`/dashboard/edit_employee/` + emp.id}>
                                 <a>
                                   <i className="zmdi zmdi-edit"></i>
                                 </a>

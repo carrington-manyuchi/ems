@@ -9,7 +9,7 @@ import Register from "./Components/Register";
 import Departments from "./Components/Departments";
 import Department from "./Components/Department";
 import AddEmployee from "./Components/AddEmployee";
-import UpdateEmployee from "./Components/UpdateEmployee";
+import EditEmployee from "./Components/EditEmployee";
 
 function App() {
   return (
@@ -30,8 +30,8 @@ function App() {
             element={<AddEmployee />}
           ></Route>
           <Route
-            path="/dashboard/updateEmployee"
-            element={<UpdateEmployee />}
+            path="/dashboard/edit_employee/:id"
+            element={<EditEmployee />}
           ></Route>
         </Route>
       </Routes>

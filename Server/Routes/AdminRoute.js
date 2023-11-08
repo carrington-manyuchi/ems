@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import multer from "multer";
 import path from "path";
+import { log } from "console";
 
 const router = express.Router();
 
@@ -87,6 +88,15 @@ router.post("/addEmployee", upload.single("image"), (req, res) => {
 router.get("/employees", (req, res) => {
   const sql = "SELECT * FROM employee";
   con.query(sql, (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
+router.get("/employee/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT * FROM employee WHERE id = ?";
+  con.query(sql, [id], (err, result) => {
     if (err) return res.json({ Status: false, Error: "Query Error" });
     return res.json({ Status: true, Result: result });
   });
