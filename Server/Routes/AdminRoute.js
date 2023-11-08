@@ -120,7 +120,7 @@ router.put("/edit_employee/:id", (req, res) => {
   });
 });
 
-router.get("/delete_employee/:id", (req, res) => {
+router.delete("/delete_employee/:id", (req, res) => {
   const id = req.params.id;
   const sql = "delete  FROM employee WHERE id = ?";
   con.query(sql, [id], (err, result) => {

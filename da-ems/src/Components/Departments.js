@@ -50,7 +50,7 @@ const Departments = () => {
             </div>
           </div>
 
-          <h3 className="title-3 m-b-30">Digital Academy Departments</h3>
+          <h2 className="title-1 m-b-30">Digital Academy Departments</h2>
           <div className="row">
             <div className="table-responsive table--no-card m-b-30">
               <table className="table table-borderless table-striped table-earning">

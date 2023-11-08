@@ -58,7 +58,7 @@ const AddEmployee = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <h3 className="title-5 m-b-35">Create A New Employee </h3>
+              <h3 className="title-1 m-b-35">Create A New Employee </h3>
               <form onSubmit={handleSubmit}>
                 <div class="form-row">
                   <div class="form-group col-md-6">

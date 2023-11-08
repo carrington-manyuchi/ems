@@ -23,7 +23,7 @@ const Department = () => {
   return (
     <div class="page-wrapper">
       <div class="page-content--bge5 mt-2">
-        <h2>Add Department</h2>
+        <h2 className="title-1 m-b-30">Add A Department</h2>
         <div class="container">
           <div class="login-wrap">
             <div class="login-content">

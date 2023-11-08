@@ -24,7 +24,7 @@ const Employees = () => {
       .delete("http://localhost:5173/auth/delete_employee/" + id)
       .then((result) => {
         if (result.data.Status) {
-          navigate("/dashboard/employees");
+          window.location.reload();
         } else {
           alert(result.data.Error);
         }
@@ -37,7 +37,7 @@ const Employees = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <h3 className="title-5 m-b-35">All Employees List</h3>
+              <h2 className="title-1 m-b-35">All Employees List</h2>
               <div className="table-data__tool">
                 <div className="table-data__tool-left">
                   <div className="rs-select2--light rs-select2--md">
@@ -113,9 +113,9 @@ const Employees = () => {
                               data-placement="top"
                               title="View"
                             >
-                              <Link>
+                              <Link to={`/dashboard/employee_detail/` + emp.id}>
                                 <a href="">
-                                  <i className="zmdi zmdi-mail-send"></i>
+                                  <i className="zmdi zmdi-eye"></i>
                                 </a>
                               </Link>
                             </button>
@@ -139,14 +139,6 @@ const Employees = () => {
                               onClick={() => handleDelete(emp.id)}
                             >
                               <i className="zmdi zmdi-delete"></i>
-                            </button>
-                            <button
-                              className="item"
-                              data-toggle="tooltip"
-                              data-placement="top"
-                              title="More"
-                            >
-                              <i className="zmdi zmdi-more"></i>
                             </button>
                           </div>
                         </td>
